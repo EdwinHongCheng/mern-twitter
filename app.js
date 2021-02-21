@@ -17,7 +17,9 @@ mongoose
   .catch(err => console.log(err));
 
 
-app.get("/", (req, res) => res.send("Hello Kitty"));
+app.get("/", (req, res) => {
+  res.send("Hello Kitty"); 
+});
 
 // app.use(passport.initialize());
 // require('./config/passport')(passport);
