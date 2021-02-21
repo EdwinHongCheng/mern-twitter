@@ -52,12 +52,15 @@ router.post('/login', (req, res) => {
       if (!user) {
         return res.status(404).json({email: 'This user does not exist'});
       }
-
     // Payload
     bcrypt.compare(password, user.password)
       .then(isMatch => {
         if (isMatch) {
-          const payload = {id: user.id, handle: user.handle};
+          const payload = { 
+            id: user.id, 
+            handle: user.handle,
+            email: user.email 
+          };
         
           jwt.sign(
             payload,
@@ -77,7 +80,6 @@ router.post('/login', (req, res) => {
     })
 })
 
-// Private Auth Route
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
     id: req.user.id,
