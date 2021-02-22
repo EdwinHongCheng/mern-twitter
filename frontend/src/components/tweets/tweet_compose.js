@@ -14,7 +14,6 @@ class TweetCompose extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      debugger
     this.setState({ newTweet: nextProps.newTweet.text });
   }
 
